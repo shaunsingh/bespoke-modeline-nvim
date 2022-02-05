@@ -56,6 +56,7 @@ function status_line()
       "%#StatusLine#",
       space(),
       get_filename(),
+      "%#StatusLineDull#",
       get_git_status(),
       "%=",
       get_line_col(),
