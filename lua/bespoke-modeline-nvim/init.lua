@@ -33,12 +33,17 @@ end
 function get_git_status()
    local branch = vim.b.gitsigns_status_dict or { head = "" }
    local is_head_empty = branch.head ~= ""
-   return is_head_empty and string.format(" (#%s) ", branch.head or "") or ""
+   return is_head_empty and string.format("  nyoom  %s) ", branch.head or "") or ""
 end
 
 function get_filename()
    local filename = vim.fn.expand "%:t"
    return filename == "" and "" or filename
+end
+
+function get_filetype()
+   local filetype = vim.fn.expand "%:e"
+   return filetype == string.format(" ( %s", filetype) or filetype
 end
 
 function get_line_col()
@@ -57,9 +62,11 @@ function status_line()
       space(),
       get_filename(),
       "%#StatusLineDull#",
+      get_filetype()
       get_git_status(),
       "%=",
       get_line_col(),
+      space(),
    }
 end
 
