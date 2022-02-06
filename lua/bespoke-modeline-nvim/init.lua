@@ -43,7 +43,7 @@ end
 
 function get_filetype()
    local filetype = vim.fn.expand "%:e"
-   return string.format(" ( %s", filetype) or ""
+   return string.format(" (%s",filetype) or ""
 end
 
 function get_line_col()
